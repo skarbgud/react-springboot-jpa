@@ -8,10 +8,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      items: [
-        { id: 0, title: 'Hello World 1', done: true },
-        { id: 1, title: 'Hello World 2', done: false },
-      ],
+      items: [],
     };
   }
 
@@ -25,12 +22,21 @@ class App extends React.Component {
     console.log("items: ", this.state.items);
   }
 
+  delete = (item) => {
+    const thisItems = this.state.items;
+    console.log("Before Update Items: ", this.state.id);
+    const newItems = thisItems.filter(e => e.id !== item.id); // 받아온 item의 id와 기존 item의 id 비교
+    this.setState({ items: newItems}, () => {
+      console.log("Update Items: ", this.state.items);
+    });
+  }
+
   render() {
     var todoItems = this.state.items.length > 0 && (
       <Paper style={{ margin: 16 }}>
         <List>
           {this.state.items.map((item, idx) => (
-            <Todo item={item} key={item.id} />
+            <Todo item={item} key={item.id} delete={this.delete}/>
           ))}
         </List>
       </Paper>
