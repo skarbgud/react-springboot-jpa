@@ -21,5 +21,11 @@ export function call(api, method, request) {
       // response.ok가 true이면 정상적인 response를 받은것
       return json;
     })
-  );
+  )
+  .catch((error) => {
+    if (error.status === 403) {
+      window.location.href = "/login"; // 접근권한 없을경우 redirect
+    }
+    return Promise.reject(error);
+  });
 }
