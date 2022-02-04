@@ -14,7 +14,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addMapping("/**")
                 // Origin이 http:localho	st:3000에 대해
                 .allowedOrigins("http://localhost:3000", "http://todoapplication-backend-dev.us-west-2.elasticbeanstalk.com", "react-springboot-jpa.vercel.app"
-                        , "http://blog.reactspringbootjpatodo.ga", "https://blog.reactspringbootjpatodo.ga");
+                        , "http://blog.reactspringbootjpatodo.ga", "https://blog.reactspringbootjpatodo.ga")
 			.allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
                 .allowedHeaders("*")
 //			.allowCredentials(true)
