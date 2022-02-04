@@ -5,18 +5,19 @@ import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration // 스프링 빈 등록
-public class WebMvcConfig implements WebMvcConfigurer{
-	private final long MAX_AGE_SECS = 3600;
-	
-	@Override
-	public void addCorsMappings(CorsRegistry registry) {
-		// 모든 경로에 대해 
-		registry.addMapping("/**")
-			// Origin이 http:localho	st:3000에 대해
-			.allowedOrigins("http://localhost:3000", "http://todoapplication-backend-dev.us-west-2.elasticbeanstalk.com", "react-springboot-jpa.vercel.app")
+public class WebMvcConfig implements WebMvcConfigurer {
+    private final long MAX_AGE_SECS = 3600;
+
+    @Override
+    public void addCorsMappings(CorsRegistry registry) {
+        // 모든 경로에 대해
+        registry.addMapping("/**")
+                // Origin이 http:localho	st:3000에 대해
+                .allowedOrigins("http://localhost:3000", "http://todoapplication-backend-dev.us-west-2.elasticbeanstalk.com", "react-springboot-jpa.vercel.app"
+                        , "http://blog.reactspringbootjpatodo.ga", "https://blog.reactspringbootjpatodo.ga");
 			.allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
-			.allowedHeaders("*")
+                .allowedHeaders("*")
 //			.allowCredentials(true)
-			.maxAge(MAX_AGE_SECS);
-	}
+                .maxAge(MAX_AGE_SECS);
+    }
 }
